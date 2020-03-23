@@ -72,5 +72,18 @@ public class RegistrationController {
         return user;
     }
 
+    public boolean userExists(){
+
+        Username = pref.getString("Username", null);
+
+        if(Username==null){
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+
 
 }

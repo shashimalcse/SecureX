@@ -2,6 +2,7 @@ package com.example.securex.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.securex.R;
 import com.example.securex.controller.Exception.UsernameEmailValidate;
+import com.example.securex.controller.RegistrationController;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -22,6 +24,8 @@ public class RegistrationActivity extends AppCompatActivity {
     String UsernameValue;
 
     UsernameEmailValidate usernameEmailValidate;
+
+    RegistrationController registrationController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +82,11 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        registrationController = new RegistrationController(getApplicationContext());
+        if(registrationController.userExists()){
+            startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
+        }
     }
 
 
