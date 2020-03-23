@@ -43,22 +43,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
                                           try {
                                               String Valid = usernameEmailValidate.Validate(UsernameValue,EmailValue);
-                                              if(Valid.equals("valid")){
-                                                  Toast t = Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT);
-                                                  t.show();
-                                              }
-                                              else if(Valid.equals("not valid")) {
-                                                  UsernameView.setError("Not Valid");
-                                                  EmailView.setError("Not Valid");
-                                              }
-                                              else if (Valid.equals("Username not valid")){
-                                                  UsernameView.setError("Not Valid");
-                                              }
-                                              else if (Valid.equals("Email not valid")){
-                                                  EmailView.setError("Not Valid");
-                                              }
 
+                                              switch (Valid){
 
+                                                  case "valid":
+                                                      Toast t = Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT);
+                                                      t.show();
+                                                      break;
+                                                  case "not valid":
+                                                      UsernameView.setError("Not Valid");
+                                                      EmailView.setError("Not Valid");
+                                                      break;
+                                                  case "Username not valid":
+                                                      UsernameView.setError("Not Valid");
+                                                      break;
+                                                  case "Email not valid":
+                                                      EmailView.setError("Not Valid");
+                                                      break;
+                                              }
                                           }
                                           catch (Exception e){
                                               Toast t = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT);

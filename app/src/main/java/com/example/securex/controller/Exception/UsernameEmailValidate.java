@@ -7,20 +7,22 @@ import java.util.regex.Pattern;
 
 public class UsernameEmailValidate {
 
+    private final String USERNAME_PATTERN = "^[a-z0-9_-]{3,15}$";
+
     public UsernameEmailValidate() {
     }
 
     public String Validate(String username, String email) {
         String validateState;
 
-        if (isValidEmail(email) && username.length()>=6) {
+        if (isValidEmail(email) && isvalidusername(username)) {
             validateState="valid";
         }
 
-        else if (username.length() < 6 && !isValidEmail(email)) {
+        else if (!isvalidusername(username) && !isValidEmail(email)) {
             validateState="not valid";
         }
-        else if(username.length()<6){
+        else if(!isvalidusername(username)){
             validateState="Username not valid";
         }
         else if(!isValidEmail(email)){
@@ -36,6 +38,9 @@ public class UsernameEmailValidate {
 
     public boolean isValidEmail(String email) {
         return (Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.length()>0);
+    }
+    public boolean isvalidusername(String username){
+        return (username.matches(USERNAME_PATTERN) && username.length()>=6);
     }
 
 }
