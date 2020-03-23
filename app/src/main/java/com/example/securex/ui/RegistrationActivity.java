@@ -3,6 +3,7 @@ package com.example.securex.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,12 +36,13 @@ public class RegistrationActivity extends AppCompatActivity {
                                       @Override
                                       public void onClick(View v) {
 
-                                          EmailValue = EmailView.getText().toString();
+                                          EmailValue = EmailView.getText().toString().trim();
                                           UsernameValue = UsernameView.getText().toString();
 
                                           usernameEmailValidate = new UsernameEmailValidate();
+
                                           try {
-                                              String Valid = usernameEmailValidate.Validate(EmailValue,UsernameValue);
+                                              String Valid = usernameEmailValidate.Validate(UsernameValue,EmailValue);
                                               if(Valid.equals("valid")){
                                                   Toast t = Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT);
                                                   t.show();
