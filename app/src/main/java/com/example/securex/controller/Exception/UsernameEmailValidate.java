@@ -35,7 +35,7 @@ public class UsernameEmailValidate {
 
 
     public boolean isValidEmail(String email) {
-        return (Patterns.EMAIL_ADDRESS.matcher(email).matches() || email.length()>0);
+        return (Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.length()>0);
     }
 
 }
