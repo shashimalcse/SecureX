@@ -13,7 +13,10 @@ public class User {
         this.Username=Username;
         this.Color=Color;
         this.Email=Email;
-        this
+        this.Color=Color;
+        this.Pin=Pin;
+        this.Password=Password;
+        this.PasswordSize=PasswordSize;
     }
 
     public String getUsername() {
