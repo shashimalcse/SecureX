@@ -19,59 +19,58 @@ public class RegistrationController {
     private User user;
 
     public RegistrationController(Context context) {
-        this.context=context;
+        this.context = context;
         pref = context.getSharedPreferences("com.android.app.users", Context.MODE_PRIVATE);
-        editor=pref.edit();
+        editor = pref.edit();
     }
 
 
-    public void createUser(User user){
+    public void createUser(User user) {
         Username = user.getUsername();
         Email = user.getEmail();
         Color = user.getColor();
         Pin = user.getPin();
         Password = user.getPassword();
         PasswordSize = user.getPasswordSize();
-        try{
-        editor.putString("Username",Username);
-        editor.putString("Email",Email);
-        editor.putString("Color",Color);
-        editor.putInt("Pin",Pin);
-        editor.putString("Password",Password);
-        editor.putInt("PasswordSize",PasswordSize);
+        try {
+            editor.putString("Username", Username);
+            editor.putString("Email", Email);
+            editor.putString("Color", Color);
+            editor.putInt("Pin", Pin);
+            editor.putString("Password", Password);
+            editor.putInt("PasswordSize", PasswordSize);
 
-        editor.apply();}
-        catch (Exception e){
+            editor.apply();
+        } catch (Exception e) {
             e.printStackTrace(); // throw better exception
         }
 
 
-
     }
-    public User getUser(){
+
+    public User getUser() {
 
         try {
-            Username=pref.getString("Username",null);
-            Email=pref.getString("Email",null);
-            Color=pref.getString("Color",null);
-            Password=pref.getString("Password",null);
-            Pin=pref.getInt("Pin",-1);
-            PasswordSize=pref.getInt("PasswordSize",-1);
+            Username = pref.getString("Username", null);
+            Email = pref.getString("Email", null);
+            Color = pref.getString("Color", null);
+            Password = pref.getString("Password", null);
+            Pin = pref.getInt("Pin", -1);
+            PasswordSize = pref.getInt("PasswordSize", -1);
 
-            if (Username==null || Email==null || Color==null || Password==null || Pin==-1 || PasswordSize==-1){
+            if (Username == null || Email == null || Color == null || Password == null || Pin == -1 || PasswordSize == -1) {
                 throw new Exception(); // throw better exception
-            }
-            else{
-                user = new User(Username,Email, Color, Pin, Password, PasswordSize);
+            } else {
+                user = new User(Username, Email, Color, Pin, Password, PasswordSize);
 
             }
 
-        }
-
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace(); // throw better exception
         }
 
         return user;
     }
+
+
 }
